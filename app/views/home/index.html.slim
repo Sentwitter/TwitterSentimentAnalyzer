@@ -1,3 +1,5 @@
 h1 Sentwitter
 
-p Bienvenue sur Sentwitter : site en chantier ! (un peu comme ta mère !)
+= form_for [@tweet_search] do |f|
+  = f.text_field :full_text, nil: false
+  = f.submit value: "Search for tweets"
