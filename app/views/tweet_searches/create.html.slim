@@ -1,0 +1,9 @@
+h2 results for #{@tweet_search.full_text}
+
+div#results
+
+  - @results.take(10).each do |tweet|
+
+    div#result
+      | #{tweet.user.screen_name} said #{tweet.text}
+      br

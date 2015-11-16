@@ -6,4 +6,11 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
+    h1 Sentwitter
+
+    = form_for [@tweet_search] do |f|
+      = f.text_field :full_text, nil: false,
+                                 placeholder: 'type your search in here'
+      = f.submit value: "Search for tweets", class: 'btn btn-primary'
+
     == yield
