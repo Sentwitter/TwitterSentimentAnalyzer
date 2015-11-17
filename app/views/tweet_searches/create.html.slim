@@ -1,9 +1,15 @@
 h2 results for #{@tweet_search.full_text}
 
 div#results
-
-  - @results.take(10).each do |tweet|
-
-    div#result
-      | #{tweet.user.screen_name} said #{tweet.text}
-      br
+  table class="table table-hover"
+    thead
+      tr
+        th = "#"
+        th = "nom"
+        th = "tweet"
+    - @results.take(10).each_with_index do |tweet, index|
+  	  tbody
+  	    tr
+  	  	  td = index
+          td.name = tweet.user.screen_name
+          td.text = tweet.text
