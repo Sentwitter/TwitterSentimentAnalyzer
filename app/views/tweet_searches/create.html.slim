@@ -7,9 +7,15 @@ div#results
         th = "#"
         th = "nom"
         th = "tweet"
+        th = "classe"
     - @results.take(10).each_with_index do |tweet, index|
   	  tbody
   	    tr
   	  	  td = index
           td.name = tweet.user.screen_name
           td.text = tweet.text
+          td
+            select
+              option 0
+              option 1
+              option -1
