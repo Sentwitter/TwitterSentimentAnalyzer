@@ -9,6 +9,7 @@ class TweetSearchesController < ApplicationController
     @results      = @client.search(@tweet_search.full_text, lang: 'fr')
     @results.each do |tweet|
       infos = tweet_info(tweet)
+      raise
       Tweet.create(infos)
     end
   end
