@@ -1,8 +1,6 @@
 class Tweet < ActiveRecord::Base
 
-  attr_accessor :twittos, :text, :annotated, :annotation
-
   validates :twittos, presence: true
-  validates :text, presence: true
+  validates :text, presence: true, allow_nil: false
 
 end
