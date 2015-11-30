@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20151124100640) do
 
   create_table "tweets", force: :cascade do |t|
+  	t.integer "tweet_id"
     t.string   "twittos"
     t.string   "text"
     t.integer  "annotation", default: -1
