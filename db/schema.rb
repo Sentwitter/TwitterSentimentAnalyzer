@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124100640) do
+ActiveRecord::Schema.define(version: 20151213164908) do
 
   create_table "tweets", force: :cascade do |t|
-    t.integer  "tweet_id",   limit: 20
+    t.integer  "tweet_id",       limit: 20
     t.string   "twittos"
     t.string   "text"
-    t.integer  "annotation",            default: -1
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.integer  "annotation",                default: -1
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.boolean  "hand_annotated",            default: false
   end
 
 end

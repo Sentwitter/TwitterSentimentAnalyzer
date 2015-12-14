@@ -3,6 +3,8 @@ class Tweet < ActiveRecord::Base
   validates :twittos, presence: true
   validates :text, presence: true, allow_nil: false
 
+  scope :not_hand_annotated, -> { where(hand_annotated: 0) }
+
   def clean
     remove_url
   end

@@ -1,0 +1,15 @@
+= form_for [@tweet_search],html: {class:"navbar-form"} do |f|
+  div class="form-group"
+    = f.text_field :full_text, nil: false, placeholder: 'type your search in here', class:"form-control"
+
+  = button_tag(type: 'submit', class: 'btn btn-default') do
+    span class="glyphicon glyphicon-search"
+
+div class="proxy-settings col-md-2"
+= form_for :proxy, url: set_http_proxy_path  do |f|
+  div class="form-group"
+    = f.text_field :host, placeholder: 'host', class: 'form-control', nil: false
+    = f.text_field :port, placeholder: 'port', class: 'form-control', nil: false
+    = f.text_field :username, placeholder: 'username', class: 'form-control', nil: false
+    = f.password_field :password, placeholder: 'password', class: 'form-control', nil: false
+    = f.submit class: 'btn btn-default'

@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   post '/set_http_proxy', to: 'home#set_http_proxy'
   resources :tweet_searches
 
+  resources :tweets
+  
 end

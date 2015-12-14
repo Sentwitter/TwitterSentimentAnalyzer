@@ -1,0 +1,28 @@
+= will_paginate @tweets
+
+table class="tweets table table-striped table-bordered"
+  thead
+    tr
+      td tweet id
+      td twitter tweet id
+      td twittos
+      td contenu
+      td annotation
+      td annoté
+
+  - @tweets.each do |tweet|
+    tr
+      td class="tweet_id"
+        == tweet.id
+      td class="twitter_tweet_id"
+        == tweet.tweet_id
+      td class="twittos"
+        == tweet.twittos
+      td class="tweet_text"
+        == tweet.text
+      td class="tweet_annotation"
+        == tweet.annotation
+      td class="tweet_hand_annotated"
+        == tweet.hand_annotated
+
+= will_paginate @tweets

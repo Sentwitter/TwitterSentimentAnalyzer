@@ -5,7 +5,7 @@ class TweetSearchesController < ApplicationController
 
   def create
     @tweet_search = TweetSearch.new(params[:tweet_search])
-    @results      = session[:client].search(@tweet_search.full_text, lang: 'fr', count: 15)
+    @results      = session[:client].search(@tweet_search.full_text, lang: 'fr')
     @results.each do |tweet|
       infos = tweet_info(tweet)
       Tweet.create(infos)
