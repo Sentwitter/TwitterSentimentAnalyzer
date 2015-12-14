@@ -5,6 +5,8 @@ class Tweet < ActiveRecord::Base
 
   scope :not_hand_annotated, -> { where(hand_annotated: 0) }
 
+  before_save :clean
+  
   def clean
     remove_url
   end
