@@ -11,16 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213164908) do
+ActiveRecord::Schema.define(version: 20151214144247) do
+
+  create_table "tweet_searches", force: :cascade do |t|
+    t.string   "full_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "tweets", force: :cascade do |t|
-    t.integer  "tweet_id",       limit: 20
+    t.integer  "tweet_id",        limit: 20
     t.string   "twittos"
     t.string   "text"
-    t.integer  "annotation",                default: -1
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
-    t.boolean  "hand_annotated",            default: false
+    t.integer  "annotation",                 default: -1
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.boolean  "hand_annotated",             default: false
+    t.integer  "tweet_search_id"
   end
 
 end
