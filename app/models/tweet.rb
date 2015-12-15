@@ -1,7 +1,7 @@
 class Tweet < ActiveRecord::Base
 
   validates :twittos, presence: true
-  validates :text, presence: true, allow_nil: false
+  validates :text, presence: true, allow_nil: false, uniqueness: true
 
   scope :not_hand_annotated, -> { where(hand_annotated: 0) }
 
@@ -16,7 +16,7 @@ class Tweet < ActiveRecord::Base
     remove_hashtag
     remove_quotes
     transform_price
-    different_smiley
+    # different_smiley
   end
 
   URI_REGEX = %r"((?:(?:[^ :/?#]+):)(?://(?:[^ /?#]*))(?:[^ ?#]*)(?:\?(?:[^ #]*))?(?:#(?:[^ ]*))?)"
@@ -76,16 +76,15 @@ class Tweet < ActiveRecord::Base
 
   def transform_price
     text = self.text
-    self.text = text.split(PRICE_REGEX).collect do |s|
-      s.gsub!(PRICE_REGEX,"X")
-    end.join
+    text.gsub!(PRICE_REGEX,"X") if text =~ PRICE_REGEX
   end
 
-  def different_smiley
-    text = self.text
-    self.text = text.split(POSITIVESMILE_REGEX).collect || text.split(NEGATIVESMILE_REGEX).collect do |s|
-      unless s = POSITIVESMILE_REGEX && NEGATIVESMILE_REGEX
-        s
+  def self.purge_doubles
+    all.each do |t|
+      all.each do |t2|
+        t2.destroy if t.text == t2.text && t.id != t2.id
       end
-    end.join
+    end
+  end
+
 end

@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151214144247) do
+ActiveRecord::Schema.define(version: 20151215010931) do
+
+  create_table "analyses", force: :cascade do |t|
+    t.integer  "tweet_search_id"
+    t.integer  "neutral_tweets"
+    t.integer  "positive_tweets"
+    t.integer  "negative_tweets"
+    t.datetime "last_performed"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "tweet_searches", force: :cascade do |t|
     t.string   "full_text"
