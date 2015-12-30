@@ -1,0 +1,17 @@
+h2 Liste des recherches enregistrées
+
+table class="table table-striped table bordered"
+  thead
+    tr
+      td id
+      td sujet recherché
+      td nombre de tweets
+  tbody
+    - @tweet_searches.each do |tweet_search|
+      tr
+        td
+          = link_to tweet_search.id, tweet_search_path(tweet_search)
+        td
+          = tweet_search.full_text
+        td
+          = tweet_search.tweets.count

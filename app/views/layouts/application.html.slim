@@ -14,6 +14,8 @@ html
         h1
           = link_to "Sentwitter", root_path
         span
-          = link_to "tweets", tweets_path
+          = link_to "tweets", tweets_path, class: "btn btn-default"
+        span
+          = link_to "tweet_searches", tweet_searches_path, class: "btn btn-default"
 
     == yield

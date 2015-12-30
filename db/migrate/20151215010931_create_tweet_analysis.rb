@@ -1,6 +1,6 @@
-class CreateAnalysis < ActiveRecord::Migration
+class CreateTweetAnalysis < ActiveRecord::Migration
   def change
-    create_table :analyses do |t|
+    create_table :tweet_analysis do |t|
       t.integer :tweet_search_id
       t.integer :neutral_tweets
       t.integer :positive_tweets
