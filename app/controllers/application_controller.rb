@@ -12,11 +12,6 @@ class ApplicationController < ActionController::Base
       config.consumer_secret    = 'kjnJ03shic0YKmtMA5tkA09gaw8cQLbPaLzbSCEevUBl2HDtA5'
       config.access_token        = '68107269-fWxJ2V3HlQNmVRVaSZoEXzU2KiC8an6h4o1WxR0tN'
       config.access_token_secret = 'RO2Rg58MtSxzRTPd4hsPaEWQdhPnOvWicvBqkzDIZqOOu'
-      proxy = {
-        host: 'proxy.univ-lille1.fr',
-        port: 3128
-      }
-      config.proxy = proxy
     end
   end
 end

@@ -7,10 +7,13 @@ class TweetSearchesController < ApplicationController
   def create
     @tweet_search = TweetSearch.new(tweet_search_params)
     @results      = session[:client].search(@tweet_search.full_text, lang: 'fr')
-    @results.each do |tweet|
-      infos = tweet_info(tweet)
-      Tweet.create(infos)
-    end if @tweet_search.save
+    render :show
+    Thread.new do
+      @results.each do |tweet|
+        infos = tweet_info(tweet)
+        Tweet.create(infos)
+      end if @tweet_search.save
+    end
   end
 
   def index
@@ -19,6 +22,7 @@ class TweetSearchesController < ApplicationController
 
   def show
     @tweet_search = TweetSearch.find(params[:id])
+    @tweets = @tweet_search.tweets.paginate(page: params[:page])
   end
 
   def tweet_info(tweet)

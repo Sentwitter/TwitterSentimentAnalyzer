@@ -1,1 +1,6 @@
 h2 Présentation de la recherche #{@tweet_search.full_text}
+
+div
+  table
+    - @tweet_search.tweets.each do |tweet|
+      == render 'tweet', tweet: tweet

@@ -1,19 +1,24 @@
+require "positive_words.rb"
+require "negative_words.rb"
+
+
 class KeywordAnalysis < TweetAnalysis
 
   before_save :perform
 
-  def perform
-    tweets = Tweet.where(tweet_search: self.tweet_search)
+
+  def analyse
+    gather_related_tweets
     positive_tweets = 0
     negative_tweets = 0
     neutral_tweets  = 0
-    tweets.each do |t|
+    @tweets.each do |t|
       tweet_cardinality = 0
       PositiveWords.words.each do |w|
-        pos = pos + 1 if t.text.include?(w)
+        tweet_cardinality = tweet_cardinality + 1 if t.text.include?(w)
       end
       NegativeWords.words.each do |w|
-        pos = pos -1 if t.text.include?(w)
+        tweet_cardinality = tweet_cardinality -1 if t.text.include?(w)
       end
 
       if tweet_cardinality == 0
