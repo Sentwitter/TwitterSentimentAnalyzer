@@ -7,15 +7,20 @@ html
     = csrf_meta_tags
 
   body
-    div class='container'
-      = nav_bar
+    div class='navbar navbar-default'
 
-
-        h1
+        h1 class="text-center"
           = link_to "Sentwitter", root_path
-        span
-          = link_to "tweets", tweets_path, class: "btn btn-default"
-        span
-          = link_to "tweet_searches", tweet_searches_path, class: "btn btn-default"
+
+
+        ul class ='nav nav-pills'
+          li class='active'
+            = link_to "Home", root_path
+          li
+            = link_to "Tweets", tweets_path
+          li
+            = link_to "Previous Searches", tweet_searches_path
 
     == yield
+
+  
