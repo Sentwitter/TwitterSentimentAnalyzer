@@ -22,7 +22,7 @@ class TweetSearchesController < ApplicationController
 
   def show
     @tweet_search = TweetSearch.find(params[:id])
-    @tweets = @tweet_search.tweets.paginate(page: params[:page])
+    @tweets = @tweet_search.tweets.paginate(page: params[:page], per_page: 15)
   end
 
   def tweet_info(tweet)

@@ -1,16 +1,23 @@
+h2 class="text-center" Liste des tweets en base
+
 = will_paginate @tweets
 
-h2 class="text-center" Liste des tweets en base
 table class="tweets table table-striped table-bordered"
   thead
     tr
-      td tweet id
-      td twitter tweet id
-      td twittos
-      td contenu
-      td annotation
-      td annoté
-
+      td 
+        b id
+      td 
+        b twitter tweet id
+      td 
+        b twittos
+      td 
+        b contenu
+      td 
+        b annotation
+      td 
+        b annoté
+  
   - @tweets.each do |tweet|
     tr
       td class="tweet_id"

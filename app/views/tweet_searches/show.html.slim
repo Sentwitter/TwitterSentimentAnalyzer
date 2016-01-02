@@ -1,6 +1,20 @@
 h2 Présentation de la recherche #{@tweet_search.full_text}
 
+= will_paginate @tweets
+
 div
-  table
-    - @tweet_search.tweets.each do |tweet|
+  table class="tweets table table-striped table-bordered"
+   thead
+     tr
+       td 
+       	b id
+       td 
+       	b twittos
+       td 
+       	b contenu
+       td 
+       	b annotation
+     - @tweets.each do |tweet|
       == render 'tweet', tweet: tweet
+
+= will_paginate @tweets

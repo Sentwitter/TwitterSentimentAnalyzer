@@ -3,15 +3,18 @@ h2 class="text-center" Liste des précédentes recherches
 table class="tweets table table-striped table bordered"
   thead
     tr
-      td id
-      td sujet recherché
-      td nombre de tweets
-  tbody
-    - @tweet_searches.each do |tweet_search|
-      tr
-        td
-          = link_to tweet_search.id, tweet_search_path(tweet_search)
-        td
-          = tweet_search.full_text
-        td
-          = tweet_search.tweets.count
+      td 
+        b id
+      td 
+        b sujet recherché
+      td 
+        b nombre de tweets
+
+  - @tweet_searches.each do |tweet_search|
+    tr
+      td
+       = link_to tweet_search.id, tweet_search_path(tweet_search)
+      td
+       = link_to tweet_search.full_text, tweet_search_path(tweet_search)
+      td
+       = tweet_search.tweets.count
