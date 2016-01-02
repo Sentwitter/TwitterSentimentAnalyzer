@@ -4,7 +4,7 @@ h2 class="text-center" Liste des tweets en base
 
 table class="tweets table table-striped table-bordered"
   thead
-    tr
+    tr class="text-center"
       td 
         b id
       td 
@@ -29,7 +29,10 @@ table class="tweets table table-striped table-bordered"
       td class="tweet_text"
         == tweet.text
       td class="tweet_annotation"
-        == tweet.annotation
+        = form_for tweet,:html => {:class => "text-center "} do |f|
+          = f.number_field(:annotation, in: -1..2, step: 1)
+          = button_tag(type: 'submit', class: 'btn btn-default')
+            span ok
       td class="tweet_hand_annotated"
         == tweet.hand_annotated
 

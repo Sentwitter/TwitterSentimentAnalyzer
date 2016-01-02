@@ -11,7 +11,7 @@ class TweetsController < ApplicationController
   end
 
   def index
-    @tweets = Tweet.not_hand_annotated.paginate(page: params[:page], per_page: 10)
+    @tweets = Tweet.paginate(page: params[:page], per_page: 10)
   end
 
   def show
@@ -24,9 +24,16 @@ class TweetsController < ApplicationController
 
   def update
     # modifie la donnée
+    @tweet = Tweet.find(params[:id])
+    @tweet.update(tweet_params.merge(hand_annotated: true))
+    redirect_to(:back)
   end
 
   def destroy
     # détruit la / les données
+  end
+
+  def tweet_params
+    params.require(:tweet).permit(:annotation)
   end
 end

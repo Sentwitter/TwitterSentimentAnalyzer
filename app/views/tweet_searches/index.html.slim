@@ -9,6 +9,8 @@ table class="tweets table table-striped table bordered"
         b sujet recherché
       td 
         b nombre de tweets
+      td
+        b export CSV
 
   - @tweet_searches.each do |tweet_search|
     tr
@@ -18,3 +20,6 @@ table class="tweets table table-striped table bordered"
        = link_to tweet_search.full_text, tweet_search_path(tweet_search)
       td
        = tweet_search.tweets.count
+      td
+       = button_tag(type: 'submit', class: 'btn btn-primary')
+            span export
