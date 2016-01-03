@@ -3,7 +3,12 @@ class Tweet < ActiveRecord::Base
   validates :twittos, presence: true
   validates :text, presence: true, allow_nil: false, uniqueness: true
 
-  scope :not_hand_annotated, -> { where(hand_annotated: 0) }
+  scope :not_hand_annotated,  -> { where(hand_annotated: 0) }
+  scope :hand_annotated,      -> { where(hand_annotated: 1) }
+
+  scope :positive, -> { where(annotation: 2) }
+  scope :negative, -> { where(annotation: 0) }
+  scope :neutral,  -> { where(annotation: 1) }
 
   before_save :clean
 

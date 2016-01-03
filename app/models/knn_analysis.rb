@@ -1,14 +1,19 @@
 class KnnAnalysis < TweetAnalysis
 
-  k = 20
+  attr_accessor :k
 
   def analyse
     if @tweet_search.tweets.hand_annotated.count < k
       raise "NotEnoughTweets"
     end
-    positive_tweets = 0
-    neutral_tweets  = 0
-    negative_tweets = 0
+    positive_tweets_number = 0
+    neutral_tweets_number  = 0
+    negative_tweets_number = 0
+    classified_tweets = {
+      positive_tweets: @tweet_search.hand_annotated.positive.to_a,
+      neutral_tweets:  @tweet_search.hand_annotated.neutral.to_a,
+      negative_tweets: @tweet_search.hand_annotated.negative.to_a
+    }
     @tweet_search.tweets.not_hand_annotated.each do |tweet|
 
       neighbours: []
@@ -34,11 +39,11 @@ class KnnAnalysis < TweetAnalysis
 
       end
       if category == pos
-        positive_tweets = positive_tweets + 1
+        positive_tweets_number = positive_tweets_number + 1
       elsif category == neu
-        neutral_tweets = neutral_tweets + 1
+        neutral_tweets_number = neutral_tweets_number + 1
       else
-        negative_tweets = negative_tweets + 1
+        negative_tweets_number = negative_tweets_number + 1
       end
     end
 
