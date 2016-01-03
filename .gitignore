@@ -7,6 +7,10 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore secrets
+/config/deploy/production.rb
+/config/deploy.rb
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
