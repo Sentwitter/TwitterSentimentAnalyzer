@@ -1,8 +1,6 @@
 tr
       td class="tweet_id"
         == tweet.id
-      td class="twitter_tweet_id"
-        == tweet.tweet_id
       td class="twittos"
         == tweet.twittos
       td class="tweet_text"
@@ -12,5 +10,5 @@ tr
           = f.number_field(:annotation, in: -1..2, step: 1)
           = button_tag(type: 'submit', class: 'btn btn-default')
             span ok
-      td class="tweet_hand_annotated"
+      td class="tweet_hand_annotated text-center"
         == tweet.hand_annotated
