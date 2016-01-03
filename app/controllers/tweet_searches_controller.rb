@@ -7,12 +7,12 @@ class TweetSearchesController < ApplicationController
   def create
     @tweet_search = TweetSearch.new(tweet_search_params)
     @results      = @client.search(@tweet_search.full_text, lang: 'fr')
-    
-    @results.each do |tweet|
-       infos = tweet_info(tweet)
-       Tweet.create(infos)
+
+    @results.take(@tweet_search.tweet_ammount).each do |tweet|
+      infos = tweet_info(tweet)
+      Tweet.create(infos)
     end if @tweet_search.save
-    render :show
+
   end
 
   def index

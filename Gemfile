@@ -42,6 +42,18 @@ gem 'twitter-bootstrap-rails', '~> 3.2.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'figaro'
+gem 'puma'
+
+group :development do
+  gem 'capistrano'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm'
+  gem 'capistrano-ssh-doctor', '~> 1.0'
+end
+
 group :development, :test do
 
   gem 'better_errors'
