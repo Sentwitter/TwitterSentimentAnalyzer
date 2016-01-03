@@ -6,14 +6,13 @@ class TweetSearchesController < ApplicationController
 
   def create
     @tweet_search = TweetSearch.new(tweet_search_params)
-    @results      = session[:client].search(@tweet_search.full_text, lang: 'fr')
+    @results      = @client.search(@tweet_search.full_text, lang: 'fr')
+    
+    @results.each do |tweet|
+       infos = tweet_info(tweet)
+       Tweet.create(infos)
+    end if @tweet_search.save
     render :show
-    Thread.new do
-      @results.each do |tweet|
-        infos = tweet_info(tweet)
-        Tweet.create(infos)
-      end if @tweet_search.save
-    end
   end
 
   def index
@@ -33,8 +32,6 @@ class TweetSearchesController < ApplicationController
       tweet_search: @tweet_search
     }
   end
-
-
 
   def tweet_search_params
     params.require(:tweet_search).permit(:full_text)
