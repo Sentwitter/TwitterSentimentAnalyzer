@@ -33,6 +33,9 @@ gem 'twitter', '~> 5.15.0'
 
 gem 'twitter-bootstrap-rails', '~> 3.2.0'
 
+gem 'bootstrap-glyphicons'
+
+gem "chartkick"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

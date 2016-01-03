@@ -1,0 +1,20 @@
+= javascript_include_tag "//www.google.com/jsapi", "chartkick"
+h2 class="text-center" Analyse du sujet : #{@tweet_search.full_text} 
+h3 class="text-center" #{@tweet_analysis.type}
+
+div class ="col-xs-6"
+  div class="panel panel-primary"
+   div class="panel-heading"
+     h2 class="text-center panel-title" Résultat d'analyse : 
+   div class="panel-body text-center"
+     p Diagramme Camembert
+     = pie_chart [["Tweets Positifs", @tweet_analysis.positive_tweets], ["Tweets Neutres", @tweet_analysis.neutral_tweets], ["Tweets Negatifs", @tweet_analysis.negative_tweets]]
+
+div class ="col-xs-6"
+  div class="panel panel-primary"
+   div class="panel-heading"
+     h2 class="text-center panel-title" Résultat d'analyse : 
+   div class="panel-body text-center"
+     p Diagramme Baton
+     = bar_chart [["Tweets Positifs", @tweet_analysis.positive_tweets], ["Tweets Neutres", @tweet_analysis.neutral_tweets], ["Tweets Negatifs", @tweet_analysis.negative_tweets]]
+

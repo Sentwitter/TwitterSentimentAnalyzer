@@ -4,13 +4,15 @@ table class="tweets table table-striped table bordered"
   thead
     tr
       td 
-        b id
+        b Id
       td 
-        b sujet recherché
+        b Sujet recherché
       td 
-        b nombre de tweets
+        b Nombre de tweets
       td
-        b export CSV
+        b Analyses
+      td
+        b Export CSV
 
   - @tweet_searches.each do |tweet_search|
     tr
@@ -20,6 +22,8 @@ table class="tweets table table-striped table bordered"
        = link_to tweet_search.full_text, tweet_search_path(tweet_search)
       td
        = tweet_search.tweets.count
+      td
+       = link_to "KeywordAnalysis", tweet_analysis_path(tweet_search)
       td
        = button_tag(type: 'submit', class: 'btn btn-primary')
          span export
