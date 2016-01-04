@@ -11,7 +11,7 @@ class TweetAnalysisController < ApplicationController
 
 	def show
 		@tweet_search = TweetSearch.find(params[:id])
-		@tweet_analysis = KeywordAnalysis.new(tweet_search: @tweet_search)
+		@tweet_analysis = KnnAnalysis.new(tweet_search: @tweet_search)
 		@results = @tweet_analysis.analyse
 	end
 end

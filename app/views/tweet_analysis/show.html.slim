@@ -29,3 +29,4 @@ div class ="col-xs-12"
      p <b>Identifiant de recherche :</b> #{@tweet_search.id} | <b>Nom de la recherche :</b> #{@tweet_search.full_text}
      p <b>Date de la recherche :</b> #{@tweet_search.updated_at}
      p <b>Type d'analyse :</b> #{@tweet_analysis.type} | <b>Total de tweets analysés :</b> #{(@tweet_analysis.neutral_tweets + @tweet_analysis.positive_tweets + @tweet_analysis.negative_tweets)}
+     p <b>Positifs :</b> #{@tweet_analysis.positive_tweets} | <b>Neutres :</b> #{@tweet_analysis.neutral_tweets} | <b>Negatifs :</b> #{@tweet_analysis.negative_tweets}
