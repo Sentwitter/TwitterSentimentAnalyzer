@@ -4,7 +4,7 @@ class Tweet < ActiveRecord::Base
   validates :text, presence: true, allow_nil: false, uniqueness: true
 
   scope :not_hand_annotated,  -> { where(hand_annotated: 0) }
-  scope :hand_annotated,      -> { where(hand_annotated: 1) }
+  scope :hand_annotated,      -> { where(hand_annotated: true) }
 
   scope :positive, -> { where(annotation: 2) }
   scope :negative, -> { where(annotation: 0) }
