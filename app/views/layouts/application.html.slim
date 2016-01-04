@@ -21,6 +21,9 @@ html
           li
             = link_to "Recherches Précédentes", tweet_searches_path
 
+    - flash.each do |key, value| 
+      = content_tag :div, value, class: "flash #{key}"
+
     == yield
 
   
