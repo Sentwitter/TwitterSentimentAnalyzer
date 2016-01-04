@@ -4,7 +4,6 @@ require "negative_words.rb"
 
 class KeywordAnalysis < TweetAnalysis
 
-  before_save :perform
 
 
   def analyse

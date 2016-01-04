@@ -22,6 +22,10 @@ class TweetSearchesController < ApplicationController
   def show
     @tweet_search = TweetSearch.find(params[:id])
     @tweets = @tweet_search.tweets.paginate(page: params[:page], per_page: 15)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @tweet_search.to_csv }
+    end
   end
 
   def tweet_info(tweet)
